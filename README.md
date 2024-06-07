@@ -1,8 +1,8 @@
-# Курсовой проект по Программным Технологиям
+# ProgramTech Users Microservice
 
 ## Описание
 
-Курсовой проект по Программным Технологиям - это микросервис для управления встречами, предназначенный для использования в архитектуре микросервисов. Проект построен с использованием Spring Boot, JPA, Hibernate и H2 (или другой базы данных по вашему выбору).
+Program_Technology_Curse - это микросервис для управления пользователями, предназначенный для использования в архитектуре микросервисов. Проект построен с использованием Spring Boot, JPA, Hibernate и PostgreSQL.
 
 ## Функциональные возможности
 
@@ -15,36 +15,39 @@
 
 ## Технологии
 
-- Java 17
+- Java 21
 - Spring Boot
 - Spring Data JPA
 - Hibernate
-- H2 (или другая настроенная база данных)
+- PostgreSQL
+- Docker
 - Maven
 - Lombok
 
 ## Требования
 
-- Java 17
-- Maven 3.6+
+- Java 21
+- Docker и Docker Compose
+- PostgreSQL
 
 ## Установка
 
-### Клонирование репозитория
-
-
-git clone https://github.com/Solek21/Program_Technology_Curse.git
+1. Клонируйте репозиторий:
+```sh
+git clone git clone https://github.com/Solek21/Program_Technology_Curse.git
 cd Program_Technology_Curse
-Сборка проекта с помощью Maven
+```
+
+2. Соберите проект с помощью Maven:
+```sh
 mvn clean install
-Запуск приложения
-mvn spring-boot:run
-Приложение запустится на http://localhost:8080.
+```
 
-### Использование
-## API Эндпоинты
-# Создание встречи
+## Использование
 
+### API Эндпоинты
+
+- **Создание Мероприятия**
 POST /api/meet/add
 Content-Type: application/json
 {
@@ -55,14 +58,20 @@ Content-Type: application/json
   "isDeleted": false,
   "idMeetingName": "meeting1"
 }
-Получение информации о встрече по ID
+```
 
+- **Получение информации о мероприятии по ID**
+```http
 GET /api/meet/{id_meeting}
-Получение списка всех встреч
+```
 
+- **Получение списка всех мероприятий**
+```http
 GET /api/meet/getAll
-Обновление информации о встрече
+```
 
+- **Обновление информации о мероприятии**
+```http
 PUT /api/meet/update
 Content-Type: application/json
 {
@@ -74,17 +83,18 @@ Content-Type: application/json
   "isDeleted": false,
   "idMeetingName": "updatedMeetingName"
 }
-Удаление встречи
+```
 
+- **Удаление мероприятия**
+```http
 PATCH /api/meet/delete
-Параметр запроса: id_meeting=uuid
+```
 
-Подсчет количества встреч
-GET /api/meet/count
 
-Тестирование
-Проект включает юнит-тесты для контроллеров. Тесты находятся в каталоге src/test/java.
+## Тестирование
+
+Проект включает юнит-тесты для контроллеров. Тесты находятся в каталоге `src/test/java`.
 
 Для запуска тестов используйте Maven:
-
+```sh
 mvn test
