@@ -41,9 +41,9 @@ mvn clean install
 mvn spring-boot:run
 Приложение запустится на http://localhost:8080.
 
-Использование
-API Эндпоинты
-Создание встречи
+### Использование
+## API Эндпоинты
+# Создание встречи
 
 POST /api/meet/add
 Content-Type: application/json
