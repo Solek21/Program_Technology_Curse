@@ -49,21 +49,6 @@ public class meetService
         repository.deleteSoftById(id_meeting);
         return true;
     }
-
-//    public boolean recoverMeet(UUID id_meeting)
-//    {
-//        try
-//        {
-//            repository.recoverMeetingById(id_meeting);
-//        }catch (Exception ex)
-//        {
-//            System.out.println("Request error: " + ex.getMessage());
-//            return false;
-//        }
-//        repository.SetUpdatedById(id_meeting, LocalDateTime.now());
-//        return true;
-//    }
-//
     public Model updateMeet(UUID id_meeting, Model newData)
     {
         try {
@@ -78,8 +63,6 @@ public class meetService
             data.setMaxSize(newData.getMaxSize());
             data.setIsDeleted(newData.isIsDeleted());
             repository.save(data);
-
-          //  repository.updateMeet(newData.getIdOwner(), newData.getIdAudience(), newData.getMaxSize(), newData.getIdEquipment(), newData.getIdMeetingName(), id_meeting);
             repository.SetUpdatedById(id_meeting,LocalDateTime.now());
         }catch (Exception ex)
         {
@@ -87,10 +70,6 @@ public class meetService
         }
         return newData;
     }
-//    public Integer getMeetCount()
-//    {
-//        return repository.getMeetingCount();
-//    }
     public List<Model> getMeetingCount()
     {
         return repository.findAll();

@@ -66,4 +66,6 @@ public class Model
 
     @Column (name = "created_at", updatable = false)
     private LocalDateTime createdAt;
+
+
 }

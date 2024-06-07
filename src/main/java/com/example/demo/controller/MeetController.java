@@ -37,10 +37,6 @@ public class MeetController
     @PostMapping("/add")
     public ResponseEntity<Model> createMeet(@RequestBody Model request)
     {
-//        if(bindingResult.hasErrors())
-//        {
-//            return ResponseEntity.badRequest().build();
-//        }
 
         Model createdMeet = Meetservice.createMeet(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdMeet);
