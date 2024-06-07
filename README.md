@@ -48,6 +48,7 @@ mvn clean install
 ### API Эндпоинты
 
 - **Создание Мероприятия**
+```http
 POST /api/meet/add
 Content-Type: application/json
 {
