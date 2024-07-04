@@ -8,10 +8,13 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 @Repository
 public interface MeetRepository extends JpaRepository<Model,UUID>
 {
+
+
     @Transactional
     @Modifying
     @Query("UPDATE Model a SET a.IsDeleted = true WHERE a.id_meeting = :id_meeting AND a.IsDeleted = false")
@@ -22,6 +25,15 @@ public interface MeetRepository extends JpaRepository<Model,UUID>
     @Query("UPDATE Model a SET a.updatedAt = :upd WHERE a.id_meeting = :id_meeting")
     void SetUpdatedById(@Param("id_meeting")UUID id_meeting,@Param("upd") LocalDateTime updatedAt);
 
+    @Query("Select a From Model a Where a.Date between :start_date AND :end_date")
+    List<Model> findAllByDateBetween(@Param("start_date") LocalDateTime startDate, @Param("end_date") LocalDateTime endDate);
+
+    @Query("Select a From Model a Where a.IdOwner = :idowner")
+    List<Model> SortByOwner(@Param("idowner") String Idowner);
+
+//    @Transactional
+//    @Modifying
+//    @Query("SELECT * From meet where = ")
 
 //    @Modifying
 //    @Transactional

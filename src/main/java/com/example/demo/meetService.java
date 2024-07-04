@@ -70,9 +70,20 @@ public class meetService
         }
         return newData;
     }
+
+    public List<Model> getMeetingsByDateRange(LocalDateTime startDate, LocalDateTime endDate)
+    {
+        return repository.findAllByDateBetween(startDate,endDate);
+    }
+
+    public List<Model> SortByOwnerMeet(String Idowner)
+    {
+        return repository.SortByOwner(Idowner);
+    }
     public List<Model> getMeetingCount()
     {
         return repository.findAll();
     }
 
 }
+ //SortBySize

@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -50,6 +51,18 @@ public class MeetController
             return ResponseEntity.status(HttpStatus.OK).body(Meetservice.getMeetById(id_meeting).orElse(null));
         }
         else return ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("/filterByDate")
+    public List<Model> getMeetingsByDateRange(@RequestParam LocalDateTime startDate, @RequestParam LocalDateTime endDate)
+    {
+        return Meetservice.getMeetingsByDateRange(startDate,endDate);
+    }
+
+    @GetMapping("/SortBySize")
+    public List<Model> SortByOwnerMeet(@RequestParam String Idowner)
+    {
+        return Meetservice.SortByOwnerMeet(Idowner);
     }
 
 //    @PatchMapping("/recover/{id}")
